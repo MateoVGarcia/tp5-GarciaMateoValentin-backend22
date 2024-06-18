@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Crear Ticket</h2>
+    <form (ngSubmit)="crearTicket()">
+      <div class="mb-3">
+        <label for="precioTicket" class="form-label">Precio del Ticket</label>
+        <input type="number" class="form-control" id="precioTicket" [(ngModel)]="precioTicket" name="precioTicket" required>
+      </div>
+      <div class="mb-3">
+        <label for="categoriaEspectador" class="form-label">Categoría del Espectador</label>
+        <select class="form-select" id="categoriaEspectador" [(ngModel)]="categoriaEspectador" name="categoriaEspectador" required>
+          <option value="Local">Local</option>
+          <option value="Extranjero">Extranjero</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="fechaCompra" class="form-label">Fecha de Compra</label>
+        <input type="date" class="form-control" id="fechaCompra" [(ngModel)]="fechaCompra" name="fechaCompra" required>
+      </div>
+      <div class="mb-3">
+        <label for="espectador" class="form-label">Espectador</label>
+        <select class="form-select" id="espectador" [(ngModel)]="espectador" name="espectador" required>
+          <option *ngFor="let espectador of espectadores" [ngValue]="espectador._id">
+            {{ espectador.nombre }}, {{ espectador.dni }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Crear Ticket</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="row text-center">
+        <h1>Productos destacados</h1>
+    </div>
+    <div class="row py-5 rounded border">
+        <div class="flex-row d-flex justify-content-center" >
+            <div class="card d-flex col-12 col-sm-4 col-md-3 mx-2" *ngFor="let p of productos">
+                <img class="img-thumbnail img-fluid" [src]="p.imagen" alt={{p.nombre}}>
+                <div class="card-body">
+                    <h5 class="card-title">{{p.nombre}}</h5>
+                    <p class="card-text">{{p.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="mb-4">Formulario de Producto</h2>
+      <form>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre">
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion">
+        </div>
+
+        <div class="mb-3">
+          <label for="imagen" class="form-label">URL de la Imagen</label>
+          <input type="text" class="form-control" id="imagen" name="imagen" [(ngModel)]="imagen">
+        </div>
+
+        <div class="mb-3">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="precio">
+        </div>
+
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="stock">
+        </div>
+
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="destacado" name="destacado" [(ngModel)]="destacado">
+          <label class="form-check-label" for="destacado">Destacado</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="guardarProducto()">Guardar Producto</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+</div>

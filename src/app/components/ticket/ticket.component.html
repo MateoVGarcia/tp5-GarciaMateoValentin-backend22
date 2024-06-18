@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>Lista de Tickets</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Precio del Ticket</th>
+            <th scope="col">Categoría del Espectador</th>
+            <th scope="col">Fecha de Compra</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ticket of tickets">
+            <td>{{ ticket.precioTicket }}</td>
+            <td>{{ ticket.categoriaEspectador }}</td>
+            <td>{{ ticket.fechaCompra }}</td>
+            <td>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + ticket._id">
+                Información del Espectador
+              </button>
+              <button class="btn btn-danger" (click)="eliminarTicket(ticket._id)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+          <tr *ngFor="let ticket of tickets">
+            <td colspan="4" class="p-0 border-0">
+              <div [id]="'collapse' + ticket._id" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <h5>Información del Espectador</h5>
+                  <p><strong>Apellido:</strong> {{ ticket.espectador.apellido }}</p>
+                  <p><strong>Nombre:</strong> {{ ticket.espectador.nombre }}</p>
+                  <p><strong>DNI:</strong> {{ ticket.espectador.dni }}</p>
+                  <p><strong>Email:</strong> {{ ticket.espectador.email }}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

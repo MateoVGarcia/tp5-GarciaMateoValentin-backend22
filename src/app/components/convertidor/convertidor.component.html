@@ -1,0 +1,103 @@
+<div class="container mt-5">
+    <div class="card bg-primary text-white">
+      <div class="card-body">
+        <h5 class="card-title">Convertidor de Monedas</h5>
+      </div>
+    </div>
+  
+    <div class="card mt-3">
+      <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label for="cantidadOrigen" class="form-label">eMail</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+              </div>
+          <div class="mb-3">
+            <label for="cantidadOrigen" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="cantidadOrigen" name="cantidadOrigen" [(ngModel)]="cantidadOrigen">
+          </div>
+  
+          <div class="mb-3">
+            <label for="monedaOrigen" class="form-label">De</label>
+            <select class="form-select" id="monedaOrigen" name="monedaOrigen" [(ngModel)]="monedaOrigen">
+              <option value="USD">USD - Dólar estadounidense</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - Libra esterlina</option>
+              <option value="ARS">ARS - Peso argentino</option>
+            </select>
+          </div>
+  
+          <div class="mb-3">
+            <label for="monedaDestino" class="form-label">A</label>
+            <select class="form-select" id="monedaDestino" name="monedaDestino" [(ngModel)]="monedaDestino">
+              <option value="USD">USD - Dólar estadounidense</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - Libra esterlina</option>
+              <option value="ARS">ARS - Peso argentino</option>
+            </select>
+          </div>
+  
+          <div class="mb-3">
+            <label for="cantidadDestino" class="form-label">Convertido</label>
+            <input type="text" class="form-control" id="cantidadDestino" name="cantidadDestino" [value]="cantidadDestino" disabled>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" (click)="convertirCantidad()">Convertir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="flex-row">
+    <button type="submit" class="btn btn-primary col-3" (click)="obtenerTransacciones()">Obtener Historial</button>
+    <div class="container mt-4 col-3">
+        <h3 class="text-primary">Filtro</h3>
+        <form>
+          <div class="mb-3">
+            <label for="monedaOFiltro" class="form-label">Moneda Origen</label>
+            <select class="form-select" id="monedaOFiltro" [(ngModel)]="monedaOFiltro" name="monedaOFiltro">
+              <option value="USD">USD - Dólar estadounidense</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - Libra esterlina</option>
+              <option value="ARS">ARS - Peso argentino</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="monedaDFiltro" class="form-label">Moneda Destino</label>
+            <select class="form-select" id="monedaDFiltro" [(ngModel)]="monedaDFiltro" name="monedaDFiltro">
+              <option value="USD">USD - Dólar estadounidense</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - Libra esterlina</option>
+              <option value="ARS">ARS - Peso argentino</option>
+
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="obtenerTransaccionesFiltradas()">Obtener Historial</button>
+        </form>
+      </div>
+      
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Moneda de Origen</th>
+              <th scope="col">Cantidad de Origen</th>
+              <th scope="col">Moneda de Destino</th>
+              <th scope="col">Cantidad de Destino</th>
+              <th scope="col">Email del Cliente</th>
+              <th scope="col">Tasa de Conversión</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaccion of transacciones">
+              <td>{{ transaccion.monedaOrigen }}</td>
+              <td>{{ transaccion.cantidadOrigen }}</td>
+              <td>{{ transaccion.monedaDestino }}</td>
+              <td>{{ transaccion.cantidadDestino }}</td>
+              <td>{{ transaccion.emailCliente }}</td>
+              <td>{{ transaccion.tasaConversion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  
